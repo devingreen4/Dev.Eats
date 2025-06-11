@@ -59,4 +59,4 @@ class FoodAnalyzer():
             pred = pred.squeeze(1).cpu()
         
         pred_str = self.classes[pred.item()]
-        return pred_str, random.choice(self.responses).format(pred_str)
+        return pred_str, random.choice(self.responses).format(pred_str).replace("_", " ")
