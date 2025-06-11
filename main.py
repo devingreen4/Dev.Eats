@@ -22,10 +22,11 @@ def main():
         )
         
         image = Image.open(BytesIO(img_data['content']))
-        pred, result = analyzer.predict(image)
-        
-        put_image(img_data['content'], width="300px")
-        put_markdown(f"### {result}")
+        _, result = analyzer.predict(image)
+
+        if img_data:
+            put_image(img_data['content'], width="300px")
+            put_markdown(f"### {result}")
 
 app.add_url_rule(
     '/', 'webio_view', webio_view(main), 
